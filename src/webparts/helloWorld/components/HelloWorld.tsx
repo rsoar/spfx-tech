@@ -10,7 +10,10 @@ import { List } from "../../../utils/Lists";
 import { Card } from "./Card";
 import { Container, WebpartContainer } from "./styles";
 
-const service: ListService<ITask> = new ListService(List.TaskList, new TaskRepository());
+const service: ListService<ITask> = new ListService(
+  List.TaskList,
+  new TaskRepository()
+);
 
 export const HelloWorld = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);

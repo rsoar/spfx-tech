@@ -14,18 +14,23 @@ export interface IPaginationHook<T> {
 
 export const usePagination = <T extends unknown>(
   data: T[],
-  pageSize: number
+  _pageSize?: number
 ): IPaginationHook<T> => {
   const [pageItems, setPageItems] = useState<T[]>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [hasNext, setHasNext] = useState(false);
   const [hasPrevious, setHasPrevious] = useState(false);
+  const [pageSize, setPageSize] = useState(0);
 
   const _goToNextPage = () => {
     if (currentPage + 1 > totalPages) return;
     setCurrentPage(currentPage + 1);
   };
+
+  useEffect(() => {
+    setPageSize(_pageSize ? _pageSize : 10);
+  }, []);
 
   const _goToFirstPage = () => setCurrentPage(0);
   const _goToLastPage = () => setCurrentPage(totalPages - 1);

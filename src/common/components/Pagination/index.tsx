@@ -17,7 +17,10 @@ export const Pagination = ({ _props }: IPaginationProps) => {
         <Icon iconName="DoubleChevronLeft8" />
       </Button>
 
-      <Button onClick={_props.goToPreviousPage}>
+      <Button
+        disabled={!_props.hasPreviousPage}
+        onClick={_props.goToPreviousPage}
+      >
         <Icon iconName="ChevronLeftSmall" />
       </Button>
 
@@ -33,7 +36,7 @@ export const Pagination = ({ _props }: IPaginationProps) => {
         <Button onClick={_props.goToNextPage}>{_props.currentPage + 1}</Button>
       )}
 
-      <Button onClick={_props.goToNextPage}>
+      <Button disabled={!_props.hasNextPage} onClick={_props.goToNextPage}>
         <Icon iconName="ChevronRightSmall" />
       </Button>
 

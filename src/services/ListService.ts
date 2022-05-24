@@ -2,14 +2,9 @@ import { sp } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
-
 import { IList } from "@pnp/sp/lists";
 import { IRepository } from "../interface/IRepository";
-
-interface IListService<T> {
-  getItems: () => Promise<T[]>;
-  getItemsByColumn: (column: string, filter: string) => Promise<T[]>;
-}
+import { IListService } from "../interface/IListService";
 
 export class ListService<T> implements IListService<T> {
   private _list: IList;
